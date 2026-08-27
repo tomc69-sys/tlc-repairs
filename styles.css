@@ -226,6 +226,19 @@ section.alt { background: #ebe4d6; }
   border-radius: 0.9rem;
 }
 
+.fb-box {
+  min-height: 430px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  padding: 0.75rem;
+  overflow: hidden;
+}
+.fb-box .fb-page,
+.fb-box iframe {
+  width: 100% !important;
+}
+
 .cta {
   background: var(--pine-dark);
   color: #f4efe6;
@@ -249,5 +262,6 @@ footer {
 @media (max-width: 860px) {
   nav a:not(.call) { display: none; }
   .hero-grid, .grid, .steps, .split { grid-template-columns: 1fr; }
+  .fb-box { min-height: 0; }
   .hero { padding-top: 2rem; }
 }
