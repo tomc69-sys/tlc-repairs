@@ -163,6 +163,20 @@ section.alt { background: #ebe4d6; }
   padding: 1.1rem;
 }
 .grid p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+.grid li.soon { background: #f3eee4; }
+.grid h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--copper);
+  color: #fff;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 .steps {
   list-style: none;
