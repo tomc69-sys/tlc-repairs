@@ -2,5 +2,5 @@
 
 Local computer and electronics repair site for Salmon, Idaho.
 
-Live: https://salmoncomputerrepair.com/
-Also: https://tlcpcrepairs.com/ and https://salmoncomputers.com/
+Live: https://tlcpcrepairs.com/
+Also: https://salmoncomputerrepair.com/ and https://salmoncomputers.com/

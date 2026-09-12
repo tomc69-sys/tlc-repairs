@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://salmoncomputerrepair.com/sitemap.xml
+Sitemap: https://tlcpcrepairs.com/sitemap.xml
