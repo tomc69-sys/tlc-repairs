@@ -47,7 +47,85 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 4.25rem;
+  min-height: 1.15in;
+}
+
+.brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.zone-clock {
+  width: 1in;
+  height: 1in;
+  flex: none;
+  padding: 0.07in;
+  border-radius: 50%;
+  background: #121212;
+  box-shadow: 0 0 0 2px #3a3a3a, inset 0 1px 1px rgba(255,255,255,0.12);
+}
+.zone-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 42%, #3c3c3c 0%, #2a2a2a 70%, #1f1f1f 100%);
+}
+.zone-tick {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.03in;
+  height: 0.08in;
+  margin-left: -0.015in;
+  margin-top: -0.04in;
+  border-radius: 1px;
+  background: #3dcc4a;
+  transform-origin: 50% 50%;
+}
+.zone-tick.major {
+  width: 0.045in;
+  height: 0.15in;
+  margin-left: -0.022in;
+  margin-top: -0.075in;
+}
+.zone-hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 1px;
+}
+.zone-hand.hour {
+  width: 0.035in;
+  height: 0.24in;
+  margin-left: -0.017in;
+  background: #7eb8e8;
+}
+.zone-hand.minute {
+  width: 0.028in;
+  height: 0.32in;
+  margin-left: -0.014in;
+  background: #7eb8e8;
+}
+.zone-hand.second {
+  width: 0.018in;
+  height: 0.36in;
+  margin-left: -0.009in;
+  background: #e07a3a;
+}
+.zone-cap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.08in;
+  height: 0.08in;
+  margin: -0.04in 0 0 -0.04in;
+  border-radius: 50%;
+  background: #8a8a96;
+  box-shadow: 0 0 0 0.015in #2a2a2a;
 }
 
 .brand {

@@ -38,6 +38,39 @@
       .catch(function () {});
   }
 
+  function startZoneClock(root) {
+    var face = root.querySelector("[data-zone-face]");
+    if (!face) return;
+    var i;
+    for (i = 0; i < 12; i += 1) {
+      var tick = document.createElement("span");
+      tick.className = "zone-tick" + (i % 3 === 0 ? " major" : "");
+      tick.style.transform = "rotate(" + (i * 30) + "deg) translateY(-0.34in)";
+      face.appendChild(tick);
+    }
+    var hour = document.createElement("div");
+    hour.className = "zone-hand hour";
+    var minute = document.createElement("div");
+    minute.className = "zone-hand minute";
+    var second = document.createElement("div");
+    second.className = "zone-hand second";
+    var cap = document.createElement("div");
+    cap.className = "zone-cap";
+    face.append(hour, minute, second, cap);
+
+    function frame() {
+      var d = new Date();
+      var s = d.getSeconds() + d.getMilliseconds() / 1000;
+      var m = d.getMinutes() + s / 60;
+      var h = (d.getHours() % 12) + m / 60;
+      second.style.transform = "rotate(" + (s * 6) + "deg)";
+      minute.style.transform = "rotate(" + (m * 6) + "deg)";
+      hour.style.transform = "rotate(" + (h * 30) + "deg)";
+      requestAnimationFrame(frame);
+    }
+    frame();
+  }
+
   function startClock(root) {
     var face = root.querySelector("[data-clock-face]");
     if (!face) return;
@@ -71,6 +104,9 @@
     setInterval(tock, 1000);
   }
 
+  document.querySelectorAll("[data-zone-clock]").forEach(function (root) {
+    startZoneClock(root);
+  });
   document.querySelectorAll("[data-hit-clock]").forEach(function (root) {
     startClock(root);
     loadCount(root);
