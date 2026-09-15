@@ -111,4 +111,20 @@
     startClock(root);
     loadCount(root);
   });
+
+  var SMS = "+14063690838";
+  function smsHref(body) {
+    var href = "sms:" + SMS;
+    if (!body) return href;
+    var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    return href + (ios ? "&" : "?") + "body=" + encodeURIComponent(body);
+  }
+  document.querySelectorAll("[data-sms-form]").forEach(function (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var field = form.querySelector("[name='body']");
+      var body = field ? String(field.value || "").trim() : "";
+      window.location.href = smsHref(body);
+    });
+  });
 })();

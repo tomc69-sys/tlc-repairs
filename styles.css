@@ -192,6 +192,14 @@ nav a[aria-current="page"] { color: var(--mint); }
   border-radius: 999px;
   text-decoration: none !important;
 }
+.sms {
+  background: transparent;
+  color: var(--mint) !important;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--mint);
+  text-decoration: none !important;
+}
 
 .hero { padding: 3.2rem 0 2.6rem; }
 .hero-grid {
@@ -226,6 +234,7 @@ h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
 .btn.primary { background: var(--copper); color: #fff; }
 .btn.ghost { border: 1px solid var(--mint); color: var(--mint); }
 .btn.light { background: var(--mint); color: #062016; }
+button.btn { font: inherit; border: 0; cursor: pointer; }
 
 .card {
   background: var(--card);
@@ -551,6 +560,28 @@ footer {
   color: var(--muted);
 }
 
+.sms-form {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+  max-width: 32rem;
+}
+.sms-form label {
+  font-weight: 700;
+}
+.sms-form textarea {
+  width: 100%;
+  min-height: 5.5rem;
+  resize: vertical;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--line);
+  background: rgba(8, 8, 8, 0.72);
+  color: var(--ink);
+  font: inherit;
+}
+.sms-form .fine { margin: 0; }
+
 .mobile-call {
   display: none;
 }
@@ -569,7 +600,7 @@ footer {
   nav {
     gap: 0.45rem 0.65rem;
   }
-  nav a:not(.call) {
+  nav a:not(.call):not(.sms) {
     font-size: 0.82rem;
   }
   .hero-grid, .grid, .steps, .split, .trust { grid-template-columns: 1fr 1fr; }
@@ -578,7 +609,8 @@ footer {
   .hero { padding-top: 2rem; }
   .zone-clock { width: 0.62in; height: 0.62in; }
   .bar { min-height: 0; flex-wrap: wrap; align-items: center; }
-  nav a.call { display: none; }
+  nav a.call,
+  nav a.sms { display: none; }
   .brand strong { font-size: 0.95rem; }
   .mobile-call {
     display: flex;
@@ -588,11 +620,12 @@ footer {
     bottom: 0;
     z-index: 20;
     justify-content: center;
+    gap: 0.55rem;
     padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
     background: rgba(12, 12, 12, 0.96);
     border-top: 1px solid var(--line);
   }
-  .mobile-call .btn { width: min(24rem, 100%); text-align: center; }
+  .mobile-call .btn { flex: 1; max-width: 12.5rem; text-align: center; }
 }
 @media (max-width: 640px) {
   .grid, .steps, .trust { grid-template-columns: 1fr; }
