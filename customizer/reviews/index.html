@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews Editor — TLC PC Repairs (local)</title>
+<link rel="stylesheet" href="editor.css">
+</head>
+<body class="editor-app">
+<header class="editor-toolbar">
+  <h1>TLC Reviews Editor</h1>
+  <span class="badge">LOCAL — approve here, then deploy</span>
+  <button type="button" id="btn-rebuild">Rebuild page</button>
+  <button type="button" id="btn-preview">Open reviews.html</button>
+  <button type="button" id="btn-refresh">Refresh</button>
+  <span id="status" class="status"></span>
+</header>
+<main class="editor-layout">
+  <section class="panel">
+    <h2>Pending <span id="pending-count" class="count">0</span></h2>
+    <p class="hint">Live site reviews are emailed to you. Paste one below, or test the public form while this editor is open. Approve to publish on the next deploy, or reject to discard.</p>
+    <form class="add-pending" id="add-pending">
+      <h3>Add a pending review</h3>
+      <div class="add-row">
+        <label>Name<input name="name" required maxlength="80" placeholder="Customer name"></label>
+        <label>Service<input name="service" maxlength="60" placeholder="Laptop repair"></label>
+        <label>Town<input name="town" maxlength="40" placeholder="Salmon"></label>
+        <label>Stars
+          <select name="rating" required>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+          </select>
+        </label>
+      </div>
+      <label>Review<textarea name="text" required minlength="20" maxlength="2500" rows="4" placeholder="Paste the review text"></textarea></label>
+      <button type="submit">Save to pending</button>
+    </form>
+    <div id="pending-list" class="card-list"></div>
+  </section>
+  <section class="panel">
+    <h2>Approved (live after deploy) <span id="approved-count" class="count">0</span></h2>
+    <p class="hint">Order top → bottom matches the website. Use ↑ ↓ to reorder. Unapprove sends back to pending. Run deploy-reviews.bat when you want this on tlcpcrepairs.com.</p>
+    <div id="approved-list" class="card-list"></div>
+  </section>
+</main>
+<div id="toast"></div>
+<script src="editor.js"></script>
+</body>
+</html>
