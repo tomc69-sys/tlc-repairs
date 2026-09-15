@@ -1,3 +1,5 @@
 .DS_Store
 Thumbs.db
 data/reviews-pending.json
+__pycache__/
+*.pyc
