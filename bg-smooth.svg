@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3840 2160" preserveAspectRatio="xMidYMid slice" width="3840" height="2160">
+  <defs>
+    <linearGradient id="haze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070707"/>
+      <stop offset="0.45" stop-color="#101010"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="fog" cx="32%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#0d1a10" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#050505" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="green" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#1a5c12" stop-opacity="0"/>
+      <stop offset="0.22" stop-color="#4bc712"/>
+      <stop offset="0.78" stop-color="#7dff6a"/>
+      <stop offset="1" stop-color="#163d10" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="3840" height="2160" fill="url(#haze)"/>
+  <ellipse cx="1100" cy="980" rx="1400" ry="820" fill="url(#fog)"/>
+  <path d="M-120,1480 C420,980 980,1680 1680,1120 C2280,620 2860,1280 4020,760" fill="none" stroke="#1a1a1a" stroke-width="420" opacity="0.9"/>
+  <path d="M-80,1860 C640,1320 1220,2040 1980,1480 C2680,980 3180,1760 4040,1180" fill="none" stroke="#141414" stroke-width="360"/>
+  <path d="M-40,420 C720,180 1280,620 1960,280 C2680,-80 3220,420 3980,80" fill="none" stroke="#171717" stroke-width="300"/>
+  <path d="M-120,1480 C420,980 980,1680 1680,1120 C2280,620 2860,1280 4020,760" fill="none" stroke="url(#green)" stroke-width="10" filter="url(#glow)"/>
+  <path d="M-200,720 C520,1180 1180,420 1860,860 C2540,1280 3120,540 4080,980" fill="none" stroke="url(#green)" stroke-width="6" opacity="0.75" filter="url(#glow)"/>
+  <path d="M240,2100 C880,1560 1460,1980 2140,1520 C2820,1080 3340,1680 3960,1240" fill="none" stroke="url(#green)" stroke-width="8" opacity="0.85" filter="url(#glow)"/>
+  <path d="M-40,420 C720,180 1280,620 1960,280 C2680,-80 3220,420 3980,80" fill="none" stroke="#4bc712" stroke-width="3" opacity="0.45" filter="url(#glow)"/>
+  <rect width="3840" height="2160" fill="#041208" opacity="0.18" filter="url(#soft)"/>
+</svg>
