@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Book | Willow &amp; Pine Salon</title>
+  <link rel="stylesheet" href="../demo-bar.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <p class="demo-bar">Sample multi-page site · not a real salon · <a href="../../websites.html">Back to TLC website work</a></p>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="./">
+        <strong>Willow &amp; Pine</strong>
+        <em>Salon · Salmon</em>
+      </a>
+      <nav>
+        <a href="./">Home</a>
+        <a href="./services.html">Services</a>
+        <a href="./team.html">Team</a>
+        <a href="./contact.html" aria-current="page">Book</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="kicker">Book</p>
+        <h1>Call, text, or send this form</h1>
+        <p class="lead">A real salon in Salmon would still pick up the phone. The form is here so a visitor can ask for a day and a stylist without hunting for a number.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrap">
+        <p class="note">Demo only. Nothing is sent. Use this as the shape of a booking page.</p>
+        <form class="form" data-demo-form>
+          <label>Name<input name="name" required></label>
+          <label>Phone<input name="phone" required></label>
+          <label>Who do you want?
+            <select name="stylist">
+              <option>Any chair</option>
+              <option>Mara</option>
+              <option>Ellie</option>
+              <option>Jon</option>
+            </select>
+          </label>
+          <label>What do you need?
+            <select name="service">
+              <option>Cut &amp; finish</option>
+              <option>Color</option>
+              <option>Blowout</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label>When works<textarea name="when" rows="3" placeholder="Thursday after 3, or Saturday morning"></textarea></label>
+          <button class="btn primary" type="submit">Send request</button>
+        </form>
+        <p>Tue–Sat 9am–5pm · 18 Center St, Salmon, ID · (208) 555-0166 sample</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">Willow &amp; Pine is a sample salon for TLC web design.</div>
+  </footer>
+  <script>
+    document.querySelector("[data-demo-form]").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Demo only — this form does not book a real appointment.");
+    });
+  </script>
+</body>
+</html>

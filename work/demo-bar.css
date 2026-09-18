@@ -1,0 +1,19 @@
+.demo-bar {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: #111;
+  color: #d8d8d8;
+  font: 14px/1.45 "Segoe UI", system-ui, sans-serif;
+  text-align: center;
+  border-bottom: 1px solid #2a2a2a;
+}
+.demo-bar a {
+  color: #7dff6a;
+  text-decoration: none;
+  font-weight: 650;
+}
+.demo-bar a:hover { text-decoration: underline; }
+.demo-bar strong { color: #fff; font-weight: 650; }
