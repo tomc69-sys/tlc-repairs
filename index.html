@@ -42,7 +42,7 @@
       "https://tlcpcrepairs.com/",
       "https://salmoncomputerrepair.com/"
     ],
-    "priceRange": "$$",
+    "priceRange": "$45-$55",
     "image": "https://tlcpcrepairs.com/og-image.png",
     "address": {
       "@type": "PostalAddress",
@@ -83,7 +83,9 @@
       "itemListElement": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website design and building", "areaServed": "Salmon, Idaho" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web services for local businesses" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Computer repair" } },
+        { "@type": "Offer", "price": "45", "priceCurrency": "USD", "description": "$45/hour bench repair", "itemOffered": { "@type": "Service", "name": "Bench computer repair" } },
+        { "@type": "Offer", "price": "55", "priceCurrency": "USD", "description": "$55/hour on-site service within 20 miles of Salmon. One-hour minimum.", "itemOffered": { "@type": "Service", "name": "On-site computer repair" } },
+        { "@type": "Offer", "price": "0.50", "priceCurrency": "USD", "description": "$0.50 per mile round trip beyond 20 miles of Salmon", "itemOffered": { "@type": "Service", "name": "Travel beyond 20 miles" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laptop repair" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PC tune-up and cleanup" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Computer upgrades" } },
@@ -106,7 +108,7 @@
       {
         "@type": "Question",
         "name": "How does pricing work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Diagnosis comes first. You get a plain-English explanation and a price before any repair starts. Parts are quoted before they are ordered." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Bench repair is $45/hour if you bring the computer in. On-site service is $55/hour within 20 miles of Salmon, with a one-hour minimum. Travel past 20 miles is $0.50 per mile round trip. Call or text for an estimate of the service and travel cost. Website work is scoped and priced before work starts. Parts are quoted before they are ordered." }
       },
       {
         "@type": "Question",
@@ -296,26 +298,48 @@
     </section>
 
     <section id="pricing" class="alt">
-      <div class="wrap split">
-        <div>
-          <h2>What it costs, without a surprise bill</h2>
-          <p>Website work is a set scope before we start. Computer work depends on the machine. What you always get is the same process:</p>
-          <ul>
-            <li>You call or text what you need — a site, a PC, or a laptop.</li>
-            <li>We tell you what a first website includes, or we look at the machine and explain it in plain English.</li>
-            <li>You get a price before any work starts. Parts are quoted before we order them.</li>
-            <li>If a new computer would be cheaper than a repair, we will say so.</li>
-          </ul>
-          <p><a href="./websites.html">What a first website includes</a> · <a href="./faq.html">FAQ</a></p>
-        </div>
-        <aside class="card hours">
-          <h2>Ready when you are</h2>
-          <p>Website work is scoped up front so you know what you are buying. Most computer jobs are days, not weeks.</p>
-          <div class="actions">
-            <a class="btn primary" href="tel:+14063690838">Call now</a>
-            <a class="btn ghost" href="sms:+14063690838">Text now</a>
+      <div class="wrap">
+        <h2>What it costs, without a surprise bill</h2>
+        <p class="section-lead">Computer work is billed by the hour. Website work is a set scope before we start. Parts are quoted before we order them.</p>
+        <ul class="grid rates">
+          <li>
+            <h3>Bench repair</h3>
+            <p class="rate">$45/hour</p>
+            <p>Bring your computer to me.</p>
+          </li>
+          <li>
+            <h3>On-site service</h3>
+            <p class="rate">$55/hour</p>
+            <p>House calls and business service within 20 miles of Salmon. One-hour minimum for on-site service.</p>
+          </li>
+          <li>
+            <h3>Travel beyond 20 miles</h3>
+            <p class="rate">$0.50/mile</p>
+            <p>The first 20 miles are included with on-site service. Farther away, additional travel is billed at $0.50 per mile, round trip, beyond the included service area.</p>
+          </li>
+        </ul>
+        <p class="pricing-note">I’m happy to travel throughout the surrounding area for computer repair, networking, Wi-Fi, printers, Starlink, and small-business technology needs.</p>
+        <p class="pricing-note estimate">Call or text and I’ll give you an estimate of the service and travel cost.</p>
+        <div class="split">
+          <div>
+            <p>Website work is a set scope before we start. Computer work depends on the machine. What you always get is the same process:</p>
+            <ul class="process">
+              <li>You call or text what you need — a site, a PC, or a laptop.</li>
+              <li>We tell you what a first website includes, or we look at the machine and explain it in plain English.</li>
+              <li>You get a price before any work starts. Parts are quoted before we order them.</li>
+              <li>If a new computer would be cheaper than a repair, we will say so.</li>
+            </ul>
+            <p><a href="./websites.html">What a first website includes</a> · <a href="./faq.html">FAQ</a></p>
           </div>
-        </aside>
+          <aside class="card hours">
+            <h2>Ready when you are</h2>
+            <p>Call or text and I’ll give you an estimate of the service and travel cost. Website work is scoped up front so you know what you are buying.</p>
+            <div class="actions">
+              <a class="btn primary" href="tel:+14063690838">Call now</a>
+              <a class="btn ghost" href="sms:+14063690838">Text now</a>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -396,7 +420,7 @@
           </details>
           <details>
             <summary>Will I know the price before you start?</summary>
-            <p>Yes. For a website, you get a written list of pages and a number. For a machine, we look at it first, tell you what we found, and quote the work. Nothing starts without your OK.</p>
+            <p>Yes. <a href="#pricing">Bench repair is $45/hour</a> if you bring the computer in. On-site is $55/hour within 20 miles of Salmon, one-hour minimum. Travel past 20 miles is $0.50/mile round trip. Call or text and I’ll estimate the service and travel. Website work is a written list of pages and a number. Parts are quoted before we order them.</p>
           </details>
           <details>
             <summary>How fast can you look at it?</summary>
