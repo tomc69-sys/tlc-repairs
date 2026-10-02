@@ -1066,16 +1066,16 @@ footer {
 }
 .home-v2 .mug-clock.zone-clock {
   position: absolute;
-  left: 72%;
-  top: 65%;
+  left: 72.2%;
+  top: 67.2%;
   width: 1in;
   height: 1in;
   padding: 0.055in;
   margin: 0;
-  background: #101010;
-  box-shadow: 0 0 0 0.016in rgba(236, 236, 236, 0.9);
+  background: #070807;
+  box-shadow: 0 0 0 0.014in rgba(236, 236, 236, 0.88);
   transform: translate(-50%, -50%) scale(0.52);
-  transform: translate(-50%, -50%) scale(calc(7.4cqi / 1in));
+  transform: translate(-50%, -50%) scale(calc(6.6cqi / 1in));
   transform-origin: 50% 50%;
   pointer-events: none;
   z-index: 2;
