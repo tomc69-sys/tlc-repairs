@@ -25,6 +25,9 @@
   <meta name="geo.placename" content="Salmon, Idaho">
   <meta name="google-site-verification" content="tG6girBw0Q7qc4brETW3jFuyapGTu8-E8eR4HYKAwaA">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <script type="application/ld+json">
   {
@@ -124,16 +127,11 @@
   }
   </script>
 </head>
-<body>
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v21.0"></script>
+<body class="home-v2">
   <a class="skip" href="#main">Skip to content</a>
   <header class="top">
     <div class="wrap bar">
       <div class="brand-cluster">
-        <div class="zone-clock" data-zone-clock aria-hidden="true">
-          <div class="zone-face" data-zone-face></div>
-        </div>
         <a class="brand" href="./">
         <span class="mark" aria-hidden="true">TLC</span>
         <span>
@@ -143,15 +141,18 @@
       </a>
       </div>
       <nav aria-label="Primary">
+        <a href="./" aria-current="page">Home</a>
         <a href="./websites.html">Websites</a>
-        <a href="./work/">Work</a>
-        <a href="./computer-repair.html">Repair</a>
+        <a href="./computer-repair.html">Computer Repair</a>
         <a href="./laptop-repair.html">Laptops</a>
-        <a href="./reviews.html">Reviews</a>
+        <a href="#about">About</a>
         <a href="./faq.html">FAQ</a>
-        <a class="call" href="tel:+14063690838">Call</a>
-        <a class="sms" href="sms:+14063690838">Text</a>
+        <a href="#contact">Contact</a>
       </nav>
+      <a class="call-combo" href="tel:+14063690838">
+        <span class="phone-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 3.5l2.4 2.4a1 1 0 0 1 0 1.4L7.6 8.6a12 12 0 0 0 7.8 7.8l1.3-1.3a1 1 0 0 1 1.4 0l2.4 2.4a1 1 0 0 1 0 1.4l-1.2 1.2c-.7.7-1.8 1-2.8.6A18 18 0 0 1 3.1 6.1c-.4-1-.1-2.1.6-2.8L4.9 2.1a1 1 0 0 1 1.6.4z"/></svg></span>
+        <span><small>Call or Text</small><strong>(406) 369-0838</strong></span>
+      </a>
     </div>
   </header>
 
@@ -160,57 +161,118 @@
       <div class="wrap hero-grid">
         <div>
           <p class="kicker">Salmon River Country · Websites &amp; computers</p>
-          <h1>Websites and computer repair in Salmon.</h1>
-          <p class="lead">TLC builds sites local shops can send people to — hours, phone, services, something Google can find. We also fix the PCs and laptops those shops run on. You get a plain-English plan and a price before work starts. We meet you or come to you.</p>
-          <div class="actions">
-            <a class="btn primary" href="tel:+14063690838">Call (406) 369-0838</a>
-            <a class="btn ghost" href="sms:+14063690838">Text this number</a>
-            <a class="btn ghost" href="./websites.html">See website work</a>
+          <h1>Websites and<br><span class="accent">computer repair</span> in Salmon.</h1>
+          <p class="lead">TLC builds websites, repairs computers and laptops, and helps keep you connected. From local businesses to home users: honest service, clear answers, and a price before work starts. No tech jargon — just help that works.</p>
+          <div class="hero-cta" role="group" aria-label="Call or text TLC">
+            <a class="cta-call" href="tel:+14063690838">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6.5 3.5l2.4 2.4a1 1 0 0 1 0 1.4L7.6 8.6a12 12 0 0 0 7.8 7.8l1.3-1.3a1 1 0 0 1 1.4 0l2.4 2.4a1 1 0 0 1 0 1.4l-1.2 1.2c-.7.7-1.8 1-2.8.6A18 18 0 0 1 3.1 6.1c-.4-1-.1-2.1.6-2.8L4.9 2.1a1 1 0 0 1 1.6.4z"/></svg>
+              Call (406) 369-0838
+            </a>
+            <a class="cta-text" href="sms:+14063690838">Text this number</a>
           </div>
-          <p class="fine">Call or text anytime, I'll answer back soon. We will meet you or drive to you in Lemhi and Custer counties, including North Fork, Leadore, Tendoy, and Challis. A hundred miles from Salmon isn’t a problem.</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg> Fast, friendly service</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg> Local &amp; trusted</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg> No geek speak</li>
+          </ul>
         </div>
-        <aside class="card hours" aria-label="Hours and contact">
-          <h2>Start a website or a repair</h2>
-          <p>Call or text anytime, I'll answer back soon. Tell us if it is a site, a computer, or a laptop.</p>
-          <dl>
-            <div><dt>Phone</dt><dd><a href="tel:+14063690838">(406) 369-0838</a> · <a href="sms:+14063690838">Text</a></dd></div>
-            <div><dt>Hours</dt><dd>Mon–Fri, 8am–7pm<br>Saturday off · Sunday by appointment</dd></div>
-            <div><dt>Area</dt><dd>Salmon, ID 83467 · Lemhi &amp; Custer counties</dd></div>
-            <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/profile.php?id=61593452687328" rel="noopener me" target="_blank">TLC PC Repairs for Salmon River Country</a></dd></div>
-          </dl>
-        </aside>
+        <figure class="hero-photo">
+          <img src="./img/hero-bench.jpg" alt="Computer repair bench with an open PC, tools, and a TLC PC Repairs mug.">
+          <div class="mug-clock zone-clock" data-zone-clock aria-hidden="true">
+            <div class="zone-face" data-zone-face></div>
+          </div>
+        </figure>
       </div>
     </section>
 
-    <section id="why" aria-label="Why people call">
+    <section aria-label="Services">
       <div class="wrap">
-        <ul class="trust">
+        <ul class="service-row">
           <li>
-            <strong>A real website</strong>
-            <span>Hours, phone, services, and a page people can find. Not only a Facebook page.</span>
+            <a href="./computer-repair.html">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="12" rx="1.5"/><path d="M8 21h8"/></svg></span>
+              <span>
+                <h3>Computer Repair</h3>
+                <p>Desktops, hardware upgrades, virus removal, and more.</p>
+              </span>
+              <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
           </li>
           <li>
-            <strong>Price before work</strong>
-            <span>Clear scope first. Nothing starts until you say yes to the number.</span>
+            <a href="./websites.html">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+              <span>
+                <h3>Website Design</h3>
+                <p>Simple, effective websites for local businesses and individuals.</p>
+              </span>
+              <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
           </li>
           <li>
-            <strong>Meet you or come to you</strong>
-            <span>Call or text. We will set a time that fits your place, not a storefront.</span>
+            <a href="./laptop-repair.html">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3l-8 8 1.4 4.6 4.6-1.4 8-8a2 2 0 0 0-2.8-2.8z"/></svg></span>
+              <span>
+                <h3>Laptop Services</h3>
+                <p>Screen replacements, battery issues, tune-ups and diagnostics.</p>
+              </span>
+              <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
           </li>
           <li>
-            <strong>Computers too</strong>
-            <span>The shop PC still has to work. Repair first. A new computer is the last option.</span>
+            <a href="#about">
+              <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.4"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M14 19a4.5 4.5 0 0 1 6.5 0"/></svg></span>
+              <span>
+                <h3>Local &amp; Personal</h3>
+                <p>Straight answers from someone in Salmon who actually cares.</p>
+              </span>
+              <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
           </li>
         </ul>
       </div>
     </section>
 
-    <section id="work">
+    <section class="visit" id="contact-card">
+      <div class="visit-grid">
+        <div class="visit-photo" role="img" aria-label="Repairing a laptop board. Real people. Real solutions."></div>
+        <div class="visit-copy">
+          <p class="kicker">Let’s get you back online</p>
+          <h2>Call, text, or stop by.</h2>
+          <p class="lead">Have a question? Need a repair? Want a website? I’ll answer back as soon as I can. Tell me what’s going on and I’ll let you know what your options are — no pressure.</p>
+          <div class="contact-box">
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6.5 3.5l2.4 2.4a1 1 0 0 1 0 1.4L7.6 8.6a12 12 0 0 0 7.8 7.8l1.3-1.3a1 1 0 0 1 1.4 0l2.4 2.4a1 1 0 0 1 0 1.4l-1.2 1.2c-.7.7-1.8 1-2.8.6A18 18 0 0 1 3.1 6.1c-.4-1-.1-2.1.6-2.8L4.9 2.1a1 1 0 0 1 1.6.4z"/></svg>
+              <span><strong><a href="tel:+14063690838">(406) 369-0838</a></strong> Call or text anytime</span>
+            </p>
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span><strong>Mon–Fri, 8am–7pm</strong> Saturday off · Sunday by appointment</span>
+            </p>
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+              <span><strong>Salmon, ID 83467</strong> Lemhi &amp; Custer counties. A hundred miles from Salmon isn’t a problem.</span>
+            </p>
+            <p>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 8h3V5h-3a4 4 0 0 0-4 4v3H7v3h3v8h3v-8h3l1-3h-4V9a1 1 0 0 1 1-1z"/></svg>
+              <span><strong><a href="https://www.facebook.com/profile.php?id=61593452687328" rel="noopener me" target="_blank">TLC PC Repairs</a></strong> Salmon River Country</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sites" id="work">
       <div class="wrap">
-        <h2>Work you can click</h2>
-        <p class="section-lead">These are live sites, not mockups. If you run a shop in Salmon River Country, this is the kind of page your customers should land on.</p>
-        <ul class="work-grid">
-          <li class="work-card primary">
+        <div class="sites-head">
+          <div>
+            <p class="kicker">Work you can click on</p>
+            <h2>Recent Websites</h2>
+            <p class="section-lead">Live sites for local businesses. Clean, mobile-friendly, and built to work.</p>
+          </div>
+          <a class="btn ghost" href="./work/">See more websites</a>
+        </div>
+        <ul class="site-grid">
+          <li class="site-card">
             <div class="work-preview">
               <div class="work-chrome" aria-hidden="true"><i></i><i></i><i></i><span>richieoutfitters.com</span></div>
               <div class="work-stage richie">
@@ -218,80 +280,21 @@
                 <em>Idaho Big Game Hunting</em>
               </div>
             </div>
-            <div class="work-copy">
-              <h3>Richie Outfitters</h3>
-              <p>A full outfitter site: hunts, camp, prices, reviews, videos, and a way to call. Built for a family business in North Fork that used to live on word of mouth and a phone number.</p>
-              <a class="btn ghost" href="https://richieoutfitters.com/" rel="noopener" target="_blank">Open live site</a>
-            </div>
+            <h3>Richie Outfitters</h3>
+            <p>Idaho Big Game Hunting</p>
+            <a class="btn ghost" href="https://richieoutfitters.com/" rel="noopener" target="_blank">View Website</a>
           </li>
-          <li class="work-card">
-            <div class="work-preview">
-              <div class="work-chrome" aria-hidden="true"><i></i><i></i><i></i><span>tlcpcrepairs.com</span></div>
-              <div class="work-stage tlc">
-                <strong>TLC PC Repairs</strong>
-                <em>Websites &amp; computers</em>
-              </div>
-            </div>
-            <div class="work-copy">
-              <h3>This shop</h3>
-              <p>The site you are on. Same idea we use for other local businesses: clear offer, phone and text, hours, and pages Google can actually read.</p>
-              <a class="btn ghost" href="./websites.html">What a first site includes</a>
-            </div>
+          <li class="site-card">
+            <img src="./img/hero-bench.jpg" alt="Preview of the TLC PC Repairs site.">
+            <h3>TLC PC Repairs</h3>
+            <p>Websites &amp; computers</p>
+            <a class="btn ghost" href="./websites.html">View Website</a>
           </li>
-        </ul>
-        <p class="fine" style="margin-top:1.2rem"><a class="btn ghost" href="./work/">See sample layouts</a> — plumber, cafe, salon, and a small shop with a cart.</p>
-      </div>
-    </section>
-
-    <section id="services">
-      <div class="wrap">
-        <h2>Websites first. Computers when you need them.</h2>
-        <p class="section-lead">Search for a website for your shop, Salmon computers, laptop repair, a tune-up, or an upgrade. If it is a site people can find or a machine that still has to work, we can usually help.</p>
-        <ul class="grid">
-          <li class="featured">
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></span>
-            <h3><a href="./websites.html">Websites &amp; web design</a></h3>
-            <p>A first site for a local shop: name, phone, hours, services, and a page Google can find. Plus updates when hours or offers change.</p>
-          </li>
-          <li>
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg></span>
-            <h3><a href="./computer-repair.html">Computer repair</a></h3>
-            <p>Won’t start, overheating, slow Windows machines, Mac troubleshooting, and parts replacement for desktops in Salmon and nearby towns.</p>
-          </li>
-          <li>
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="1.5"/><path d="M8 21h8"/></svg></span>
-            <h3><a href="./laptop-repair.html">Laptop repair</a></h3>
-            <p>Cracked screens, charging trouble, overheating, and making a laptop usable again for folks around here.</p>
-          </li>
-          <li>
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 15h16M7 12V8a5 5 0 0 1 10 0v4"/><rect x="6" y="15" width="12" height="5" rx="1"/></svg></span>
-            <h3>Tune-ups &amp; upgrades</h3>
-            <p>SSD and memory upgrades, Windows cleanup, and tune-ups that make an older PC feel new enough to keep using.</p>
-          </li>
-          <li>
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5C7.5 20.5 4 17 4 12V7z"/></svg></span>
-            <h3>Virus &amp; malware</h3>
-            <p>Pop-ups, ransom notes, hijacked browsers, and “my computer got weird after an email.” Cleanup plus prevention.</p>
-          </li>
-          <li>
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="10" rx="1.5"/><path d="M8 18h8M12 14v4"/></svg></span>
-            <h3>Data backup &amp; recovery</h3>
-            <p>Copy photos and files off a failing drive when possible. Set up simple backups so it does not happen twice.</p>
-          </li>
-          <li>
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="8" rx="1"/><path d="M4 15h16v4H4zM8 19v2h8v-2"/></svg></span>
-            <h3>Electronics &amp; printers</h3>
-            <p>Printers, Wi-Fi, TVs and monitors, power supplies, and other household electronics that stopped behaving.</p>
-          </li>
-          <li>
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg></span>
-            <h3>Old computer mad at you?</h3>
-            <p>Got an old computer that will not upgrade, or you cannot afford a new one yet? We may be able to help your old desktop or laptop run a few more miles.</p>
-          </li>
-          <li class="soon">
-            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
-            <h3>Phones &amp; tablets <span class="badge">Coming soon</span></h3>
-            <p>Charging problems, screen damage, and software issues. We are setting this up and will take phone and tablet jobs shortly.</p>
+          <li class="site-card">
+            <img src="./img/idaho-lake.jpg" alt="Mountain lake landscape used on a sample local-business site.">
+            <h3>Local business samples</h3>
+            <p>Services, info, and contact</p>
+            <a class="btn ghost" href="./work/">View Website</a>
           </li>
         </ul>
       </div>
@@ -363,7 +366,7 @@
       </div>
     </section>
 
-    <section id="area">
+    <section id="about">
       <div class="wrap split">
         <div>
           <h2>Salmon shops, close to home</h2>
@@ -382,26 +385,6 @@
           <li>Lemhi County</li>
           <li>Custer County</li>
         </ul>
-      </div>
-    </section>
-
-    <section id="facebook" class="alt">
-      <div class="wrap split">
-        <div>
-          <h2>Follow the shop on Facebook</h2>
-          <p>The website and the Facebook page are the same business: TLC PC Repairs for Salmon River Country. Follow the page, share it with neighbors, and message us there if that is easier than a call.</p>
-          <p>If you already know us, invite a few friends in town to follow it. That is how most people around here find a local shop.</p>
-          <div class="actions">
-            <a class="btn primary" href="https://www.facebook.com/profile.php?id=61593452687328" rel="noopener me" target="_blank">Open Facebook page</a>
-          </div>
-        </div>
-        <div class="fb-box">
-          <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=61593452687328" data-tabs="timeline" data-width="500" data-height="430" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/profile.php?id=61593452687328" class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/profile.php?id=61593452687328" rel="noopener me" target="_blank">TLC PC Repairs for Salmon River Country</a>
-            </blockquote>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -455,9 +438,25 @@
   </main>
 
   <footer>
-    <div class="wrap foot">
-      <p><strong>TLC PC Repairs for Salmon River Country</strong></p>
-      <p><a href="tel:+14063690838">(406) 369-0838</a> · <a href="sms:+14063690838">Text</a> · <a href="https://www.facebook.com/profile.php?id=61593452687328" rel="noopener me" target="_blank">Facebook</a> · <a href="./websites.html">Websites</a> · <a href="./computer-repair.html">Computer repair</a> · <a href="./laptop-repair.html">Laptop repair</a> · <a href="./reviews.html">Reviews</a> · <a href="./faq.html">FAQ</a> · Call or text anytime, I'll answer back soon</p>
+    <div class="wrap foot-v2">
+      <a class="brand" href="./">
+        <span>
+          <strong>TLC PC Repairs</strong>
+          <em>Websites &amp; computers</em>
+        </span>
+      </a>
+      <nav aria-label="Footer">
+        <a href="./">Home</a>
+        <a href="./websites.html">Websites</a>
+        <a href="./computer-repair.html">Computer Repair</a>
+        <a href="./laptop-repair.html">Laptops</a>
+        <a href="./faq.html">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="foot-meta">
+        <p>Salmon, Idaho 83467<br>Lemhi &amp; Custer Counties</p>
+        <p class="mountain">Small Town. Big Solutions.</p>
+      </div>
     </div>
     <div class="wrap foot-credit">
       <div class="hit-clock" data-hit-clock aria-label="Visitor count">
@@ -469,7 +468,7 @@
           <span class="hit-caption">visits</span>
         </p>
       </div>
-      <p class="byline"><a href="mailto:tlcarder@gmail.com">web design by this guy</a></p>
+      <p class="byline">© 2026 TLC PC Repairs · <a href="mailto:tlcarder@gmail.com">web design by this guy</a></p>
     </div>
   </footer>
   <script src="./counter.js" defer></script>
