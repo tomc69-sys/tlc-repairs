@@ -3,3 +3,6 @@ Thumbs.db
 data/reviews-pending.json
 __pycache__/
 *.pyc
+_friend-mockup/
+_publish_friend_site.py
+_ref/

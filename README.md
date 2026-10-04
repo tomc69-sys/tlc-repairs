@@ -3,6 +3,8 @@
 Local website design and computer repair site for Salmon, Idaho.
 
 Live: https://tlcpcrepairs.com/
+
+Main pages live at folder URLs (`/websites/`, `/computer-repair/`, `/laptops/`, `/about/`, `/faq/`, `/contact/`). Older `.html` paths redirect.
 Also: https://salmoncomputers.com/ (redirects to main site)
 Also: https://salmoncomputerrepair.com/ (redirects to main site)
 
