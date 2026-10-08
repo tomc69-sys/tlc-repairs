@@ -44,14 +44,72 @@
   }
 
   var rail = document.querySelector("[data-rail]");
-  if (rail && !reduce) {
+  if (rail && !reduce && !window.matchMedia("(pointer: coarse)").matches) {
+    var dragging = false;
+    var pauseUntil = 0;
     var timer = window.setInterval(function () {
-      if (rail.matches(":hover")) return;
+      if (dragging || Date.now() < pauseUntil) return;
+      if (window.matchMedia("(hover: hover)").matches && rail.matches(":hover")) return;
       var max = rail.scrollWidth - rail.clientWidth;
-      if (rail.scrollLeft >= max - 2) rail.scrollLeft = 0;
+      if (max <= 0) return;
+      if (rail.scrollLeft >= max - 1) rail.scrollLeft = 0;
       else rail.scrollLeft += 1;
     }, 24);
+    function holdRail(event) {
+      dragging = true;
+      rail.classList.add("dragging");
+      if (event.pointerId != null && rail.setPointerCapture) {
+        try { rail.setPointerCapture(event.pointerId); } catch (e) {}
+      }
+    }
+    var snapTimer = 0;
+    function releaseRail() {
+      dragging = false;
+      pauseUntil = Date.now() + 1600;
+      window.clearTimeout(snapTimer);
+      snapTimer = window.setTimeout(function () {
+        if (!dragging) rail.classList.remove("dragging");
+      }, 160);
+    }
+    rail.addEventListener("scroll", function () {
+      if (dragging || !rail.classList.contains("dragging")) return;
+      window.clearTimeout(snapTimer);
+      snapTimer = window.setTimeout(function () {
+        if (!dragging) rail.classList.remove("dragging");
+      }, 160);
+    }, { passive: true });
+    rail.addEventListener("pointerdown", holdRail);
+    rail.addEventListener("pointerup", releaseRail);
+    rail.addEventListener("pointercancel", releaseRail);
     rail.addEventListener("wheel", function () { window.clearInterval(timer); }, { passive: true });
+  } else if (rail) {
+    var fingerDown = false;
+    var snapTimer = 0;
+    function settleRail() {
+      window.clearTimeout(snapTimer);
+      snapTimer = window.setTimeout(function () {
+        if (!fingerDown) rail.classList.remove("dragging");
+      }, 160);
+    }
+    rail.addEventListener("pointerdown", function (event) {
+      fingerDown = true;
+      rail.classList.add("dragging");
+      if (event.pointerId != null && rail.setPointerCapture) {
+        try { rail.setPointerCapture(event.pointerId); } catch (e) {}
+      }
+    });
+    rail.addEventListener("scroll", function () {
+      if (fingerDown || !rail.classList.contains("dragging")) return;
+      settleRail();
+    }, { passive: true });
+    rail.addEventListener("pointerup", function () {
+      fingerDown = false;
+      settleRail();
+    });
+    rail.addEventListener("pointercancel", function () {
+      fingerDown = false;
+      settleRail();
+    });
   }
 
   var box = document.querySelector(".lightbox");
@@ -81,10 +139,23 @@
       var banner = turbine.parentElement;
       var bw = banner.clientWidth;
       var bh = banner.clientHeight;
+      var styles = getComputedStyle(banner);
+      var cropY = parseFloat(styles.getPropertyValue("--crop-y"));
+      var rotorSrc = parseFloat(styles.getPropertyValue("--rotor"));
+      if (!isFinite(cropY)) cropY = 0.58;
+      if (!isFinite(rotorSrc)) rotorSrc = 108;
       var scale = Math.max(bw / 1600, bh / 937);
-      var ox = (bw - 1600 * scale) * 0.5;
-      var oy = (bh - 937 * scale) * 0.58;
-      var dia = 108 * scale;
+      var visible = bw / scale;
+      var tip = 1510 + rotorSrc / 2 + 6;
+      var cropX = 0.5;
+      if (visible < 1594) {
+        var need = (tip - visible) / (1600 - visible);
+        if (need > cropX) cropX = Math.min(1, need);
+      }
+      banner.style.setProperty("--crop-x", cropX.toFixed(4));
+      var ox = (bw - 1600 * scale) * cropX;
+      var oy = (bh - 937 * scale) * cropY;
+      var dia = rotorSrc * scale;
       var hubX = 1510;
       var hubY = 424;
       var poleBottom = 700;
