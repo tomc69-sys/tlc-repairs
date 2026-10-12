@@ -558,8 +558,8 @@ html.motion .hero .btn { animation: rise 0.8s var(--ease) 0.4s both; }
   to { opacity: 1; transform: none; }
 }
 @keyframes drift {
-  from { transform: scale(1.04) translate3d(0, 0, 0); }
-  to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+  from { transform: scale(1.04); }
+  to { transform: scale(1.08); }
 }
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }
