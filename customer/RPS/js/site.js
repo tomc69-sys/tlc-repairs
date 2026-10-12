@@ -44,72 +44,55 @@
   }
 
   var rail = document.querySelector("[data-rail]");
-  if (rail && !reduce && !window.matchMedia("(pointer: coarse)").matches) {
+  if (rail) {
     var dragging = false;
+    var moved = false;
+    var startX = 0;
     var pauseUntil = 0;
-    var timer = window.setInterval(function () {
-      if (dragging || Date.now() < pauseUntil) return;
-      if (window.matchMedia("(hover: hover)").matches && rail.matches(":hover")) return;
-      var max = rail.scrollWidth - rail.clientWidth;
-      if (max <= 0) return;
-      if (rail.scrollLeft >= max - 1) rail.scrollLeft = 0;
-      else rail.scrollLeft += 1;
-    }, 24);
-    function holdRail(event) {
-      dragging = true;
-      rail.classList.add("dragging");
-      if (event.pointerId != null && rail.setPointerCapture) {
-        try { rail.setPointerCapture(event.pointerId); } catch (e) {}
-      }
-    }
     var snapTimer = 0;
-    function releaseRail() {
-      dragging = false;
-      pauseUntil = Date.now() + 1600;
-      window.clearTimeout(snapTimer);
-      snapTimer = window.setTimeout(function () {
-        if (!dragging) rail.classList.remove("dragging");
-      }, 160);
+    var coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (!reduce && !coarse) {
+      var timer = window.setInterval(function () {
+        if (dragging || Date.now() < pauseUntil) return;
+        if (window.matchMedia("(hover: hover)").matches && rail.matches(":hover")) return;
+        var max = rail.scrollWidth - rail.clientWidth;
+        if (max <= 0) return;
+        if (rail.scrollLeft >= max - 1) rail.scrollLeft = 0;
+        else rail.scrollLeft += 1;
+      }, 24);
+      rail.addEventListener("wheel", function () { window.clearInterval(timer); }, { passive: true });
     }
-    rail.addEventListener("scroll", function () {
-      if (dragging || !rail.classList.contains("dragging")) return;
-      window.clearTimeout(snapTimer);
-      snapTimer = window.setTimeout(function () {
-        if (!dragging) rail.classList.remove("dragging");
-      }, 160);
-    }, { passive: true });
-    rail.addEventListener("pointerdown", holdRail);
-    rail.addEventListener("pointerup", releaseRail);
-    rail.addEventListener("pointercancel", releaseRail);
-    rail.addEventListener("wheel", function () { window.clearInterval(timer); }, { passive: true });
-  } else if (rail) {
-    var fingerDown = false;
-    var snapTimer = 0;
     function settleRail() {
       window.clearTimeout(snapTimer);
       snapTimer = window.setTimeout(function () {
-        if (!fingerDown) rail.classList.remove("dragging");
+        if (!dragging) rail.classList.remove("dragging");
       }, 160);
     }
     rail.addEventListener("pointerdown", function (event) {
-      fingerDown = true;
+      dragging = true;
+      moved = false;
+      startX = event.clientX;
       rail.classList.add("dragging");
-      if (event.pointerId != null && rail.setPointerCapture) {
-        try { rail.setPointerCapture(event.pointerId); } catch (e) {}
-      }
     });
+    rail.addEventListener("pointermove", function (event) {
+      if (dragging && Math.abs(event.clientX - startX) > 8) moved = true;
+    });
+    function releaseRail() {
+      dragging = false;
+      pauseUntil = Date.now() + 1600;
+      settleRail();
+    }
+    rail.addEventListener("pointerup", releaseRail);
+    rail.addEventListener("pointercancel", releaseRail);
     rail.addEventListener("scroll", function () {
-      if (fingerDown || !rail.classList.contains("dragging")) return;
+      if (dragging || !rail.classList.contains("dragging")) return;
       settleRail();
     }, { passive: true });
-    rail.addEventListener("pointerup", function () {
-      fingerDown = false;
-      settleRail();
-    });
-    rail.addEventListener("pointercancel", function () {
-      fingerDown = false;
-      settleRail();
-    });
+    rail.addEventListener("click", function (event) {
+      if (!moved) return;
+      event.preventDefault();
+      event.stopPropagation();
+    }, true);
   }
 
   var box = document.querySelector(".lightbox");
