@@ -2,7 +2,7 @@
 import shutil
 from pathlib import Path
 
-ROOT = Path(r"C:\Projects\TLC-Repairs")
+ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "work" / "remote-power"
 DEST = ROOT / "customer" / "RPS"
 PREFIX = "/customer/RPS"

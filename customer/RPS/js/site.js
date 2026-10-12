@@ -52,15 +52,40 @@
     var snapTimer = 0;
     var coarse = window.matchMedia("(pointer: coarse)").matches;
     if (!reduce && !coarse) {
-      var timer = window.setInterval(function () {
-        if (dragging || Date.now() < pauseUntil) return;
-        if (window.matchMedia("(hover: hover)").matches && rail.matches(":hover")) return;
-        var max = rail.scrollWidth - rail.clientWidth;
-        if (max <= 0) return;
-        if (rail.scrollLeft >= max - 1) rail.scrollLeft = 0;
-        else rail.scrollLeft += 1;
-      }, 24);
-      rail.addEventListener("wheel", function () { window.clearInterval(timer); }, { passive: true });
+      var originals = Array.prototype.slice.call(rail.children);
+      originals.forEach(function (node) {
+        var copy = node.cloneNode(true);
+        copy.setAttribute("aria-hidden", "true");
+        if (copy.matches("a")) copy.tabIndex = -1;
+        rail.appendChild(copy);
+      });
+      var loopAt = 0;
+      function measureLoop() {
+        var mark = rail.children[originals.length];
+        var first = rail.children[0];
+        loopAt = mark && first ? mark.offsetLeft - first.offsetLeft : 0;
+      }
+      measureLoop();
+      window.addEventListener("resize", measureLoop);
+      var gliding = true;
+      var last = 0;
+      function frame(now) {
+        if (!last) last = now;
+        var dt = Math.min(34, now - last);
+        last = now;
+        var paused = dragging || Date.now() < pauseUntil || (window.matchMedia("(hover: hover)").matches && rail.matches(":hover"));
+        if (gliding && !paused && loopAt > 0) {
+          rail.classList.add("gliding");
+          rail.scrollLeft += dt * 0.032;
+          if (rail.scrollLeft >= loopAt) rail.scrollLeft -= loopAt;
+        }
+        window.requestAnimationFrame(frame);
+      }
+      window.requestAnimationFrame(frame);
+      rail.addEventListener("wheel", function () {
+        gliding = false;
+        rail.classList.remove("gliding");
+      }, { passive: true });
     }
     function settleRail() {
       window.clearTimeout(snapTimer);
@@ -73,6 +98,7 @@
       moved = false;
       startX = event.clientX;
       rail.classList.add("dragging");
+      rail.classList.remove("gliding");
     });
     rail.addEventListener("pointermove", function (event) {
       if (dragging && Math.abs(event.clientX - startX) > 8) moved = true;
