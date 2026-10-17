@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /work/
 
 Sitemap: https://tlcpcrepairs.com/sitemap.xml
