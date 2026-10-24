@@ -251,6 +251,65 @@
     runCalc();
   }
 
+  var mapQuery = "4090 Eastside Highway, Stevensville, MT 59870";
+  var mapButtons = document.querySelectorAll("[data-maps]");
+  if (mapButtons.length) {
+    var encoded = encodeURIComponent(mapQuery);
+    var android = /Android/i.test(navigator.userAgent || "");
+    var phone = android || /iPhone|iPad|iPod/i.test(navigator.userAgent || "") || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var sheet = document.createElement("div");
+    sheet.className = "map-sheet";
+    sheet.hidden = true;
+    var apps = [
+      ["Apple Maps", "https://maps.apple.com/?daddr=" + encoded + "&dirflg=d", "iPhone and Mac"],
+      ["Google Maps", "https://www.google.com/maps/dir/?api=1&destination=" + encoded, "Android and iPhone"],
+      ["Waze", "https://waze.com/ul?q=" + encoded + "&navigate=yes", "Android and iPhone"]
+    ];
+    if (android) apps.push(["Any map app", "geo:0,0?q=" + encoded, "Opens the phone's list"]);
+    sheet.innerHTML = '<button type="button" class="map-backdrop" aria-label="Close directions"></button>'
+      + '<div class="map-panel" role="dialog" aria-modal="true" aria-labelledby="map-title">'
+      + '<p class="kicker">Shop</p><h2 id="map-title">Near 4090 Eastside Highway</h2>'
+      + '<p>Stevensville, MT 59870. The pin is 4090 Eastside Highway. Each choice opens that app when it is on the phone.</p>'
+      + '<div class="map-choices">'
+      + apps.map(function (app) {
+        return '<a href="' + app[1] + '">' + app[0] + '<span>' + app[2] + '</span></a>';
+      }).join("")
+      + '</div><button type="button" class="map-close">Close</button></div>';
+    document.body.appendChild(sheet);
+    var dialog = sheet.querySelector(".map-panel");
+    var lastFocus = null;
+    function openMaps(event) {
+      if (event) event.preventDefault();
+      lastFocus = document.activeElement;
+      sheet.hidden = false;
+      requestAnimationFrame(function () { sheet.classList.add("open"); });
+      var first = sheet.querySelector("a");
+      if (first) first.focus();
+    }
+    function closeMaps() {
+      sheet.classList.remove("open");
+      window.setTimeout(function () {
+        sheet.hidden = true;
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280);
+    }
+    mapButtons.forEach(function (button) {
+      button.addEventListener("click", openMaps);
+    });
+    sheet.querySelector(".map-backdrop").addEventListener("click", closeMaps);
+    sheet.querySelector(".map-close").addEventListener("click", closeMaps);
+    sheet.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeMaps();
+    });
+    sheet.querySelectorAll("a").forEach(function (link) {
+      if (!phone) {
+        link.target = "_blank";
+        link.rel = "noopener";
+      }
+    });
+    dialog.addEventListener("click", function (event) { event.stopPropagation(); });
+  }
+
   var form = document.querySelector("[data-preview-form]");
   if (form) {
     form.addEventListener("submit", function (event) {

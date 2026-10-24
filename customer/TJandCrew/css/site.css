@@ -266,7 +266,7 @@ h1, h2, h3, .serif { font-family: "Playfair Display", Georgia, serif; font-weigh
 }
 .review-card header { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
 .review-card h2 { margin: 0; font-family: Montserrat, sans-serif; font-size: 1.375rem; font-weight: 650; letter-spacing: 0; }
-.review-card img { width: 72px; height: 72px; object-fit: contain; }
+.review-card img { width: 72px; height: 72px; object-fit: contain; animation: bob 6s ease-in-out infinite; }
 .review-card p { margin: 0.35rem 0 0; font-size: 0.9rem; line-height: 1.45; }
 .hero .btn { margin-top: 1.15rem; }
 
@@ -700,6 +700,106 @@ html.motion .hero .btn { animation: rise 0.8s var(--ease) 0.4s both; }
   .preview-bar { position: static; }
 }
 
+.map-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--green-deep);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.map-open::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: 0 0 auto;
+  border-radius: 50% 50% 50% 0;
+  background: currentColor;
+  animation: pinbob 2.6s ease-in-out infinite;
+}
+.site-footer .map-open { color: #fff; }
+.site-footer .map-open:hover { color: var(--lime); }
+.map-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: end center;
+  padding: 0.75rem;
+}
+.map-sheet[hidden] { display: none; }
+.map-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+}
+.map-panel {
+  position: relative;
+  width: min(26rem, 100%);
+  max-height: calc(100dvh - 1.5rem);
+  overflow: auto;
+  margin: 0;
+  padding: 1.15rem 1.15rem 1.25rem;
+  background: #141414;
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  translate: 0 1.4rem;
+  opacity: 0;
+  transition: translate 0.45s var(--ease), opacity 0.4s var(--ease);
+}
+.map-sheet.open .map-backdrop { opacity: 1; }
+.map-sheet.open .map-panel { translate: 0 0; opacity: 1; }
+.map-panel h2 { margin: 0.15rem 0 0.2rem; font-size: clamp(1.6rem, 1rem + 1.4vw, 2.15rem); }
+.map-panel .kicker { color: var(--lime); }
+.map-panel p { margin: 0.2rem 0 0.9rem; color: #ddd; }
+.map-choices { display: grid; gap: 0.55rem; }
+.map-choices a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.75rem;
+  min-height: 3rem;
+  padding: 0.7rem 0.95rem;
+  border-radius: 12px;
+  background: #1d1d1d;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.map-choices a span { color: #bdbdbd; font-weight: 600; font-size: 0.8rem; }
+.map-choices a:hover { background: #2a2a2a; transform: translateY(-2px); }
+.map-close {
+  margin-top: 0.85rem;
+  background: none;
+  border: 0;
+  color: #ddd;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+@media (min-width: 800px) {
+  .map-sheet { place-items: center; }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes pinbob {
+  0%, 100% { transform: rotate(-45deg) translateY(0); }
+  50% { transform: rotate(-45deg) translateY(-3px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -707,4 +807,6 @@ html.motion .hero .btn { animation: rise 0.8s var(--ease) 0.4s both; }
     transition: none !important;
   }
   html.motion .rise { opacity: 1; transform: none; }
+  .map-sheet.open .map-backdrop,
+  .map-sheet.open .map-panel { opacity: 1; translate: none; }
 }
