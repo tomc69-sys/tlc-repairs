@@ -703,27 +703,61 @@ html.motion .hero .btn { animation: rise 0.8s var(--ease) 0.4s both; }
 }
 
 .map-open {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  margin: 0;
-  padding: 0;
+  justify-content: center;
+  margin: 0.35rem 0;
+  padding: 0.72rem 1.2rem;
   border: 0;
+  border-radius: 999px;
   background: none;
   color: var(--green-deep);
   font: inherit;
   font-weight: 700;
+  letter-spacing: 0.06em;
   cursor: pointer;
 }
-.map-open::before {
-  content: "";
-  width: 0.55rem;
-  height: 0.55rem;
-  flex: 0 0 auto;
-  border-radius: 50% 50% 50% 0;
-  background: currentColor;
-  animation: pinbob 2.6s ease-in-out infinite;
+p:has(> .map-open) { margin-top: 1.45rem; margin-bottom: 1.15rem; }
+.map-road,
+.map-road::before,
+.map-road::after {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
 }
+.map-road {
+  inset: -1.05rem -1.45rem;
+  border: 1.5px solid currentColor;
+}
+.map-road::before {
+  content: "";
+  inset: 0.62rem 0.78rem;
+  border: 1.5px solid currentColor;
+}
+.map-road::after {
+  content: "";
+  inset: 0.28rem 0.36rem;
+  border: 2.5px dotted currentColor;
+}
+.map-orbit {
+  position: absolute;
+  inset: -0.74rem -1.06rem;
+  pointer-events: none;
+  animation: drive 4.8s linear infinite;
+}
+.map-car {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1.55rem;
+  height: 0.72rem;
+  margin-left: -0.78rem;
+  margin-top: -0.36rem;
+  display: block;
+  overflow: visible;
+}
+.site-footer p:has(> .map-open) { margin-top: 1.45rem; margin-bottom: 0.8rem; }
 .site-footer .map-open { color: #fff; }
 .site-footer .map-open:hover { color: var(--lime); }
 .map-sheet {
@@ -797,9 +831,8 @@ html.motion .hero .btn { animation: rise 0.8s var(--ease) 0.4s both; }
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-4px); }
 }
-@keyframes pinbob {
-  0%, 100% { transform: rotate(-45deg) translateY(0); }
-  50% { transform: rotate(-45deg) translateY(-3px); }
+@keyframes drive {
+  to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -293,7 +293,9 @@
         if (lastFocus && lastFocus.focus) lastFocus.focus();
       }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280);
     }
+    var car = '<span class="map-road" aria-hidden="true"></span><span class="map-orbit" aria-hidden="true"><svg class="map-car" viewBox="0 0 72 32"><path fill="currentColor" d="M4 20c0-6 2-8 8-8h16l8-6h14l10 8h8c2 0 4 2 4 4v4H58a5 5 0 0 1-10 0H22a5 5 0 0 1-10 0H4z"/customer/TJandCrew/><path fill="#111" opacity=".4" d="M30 16l6-5h12l6 5z"/customer/TJandCrew/><circle cx="17" cy="22" r="3.1" fill="#111"/customer/TJandCrew/><circle cx="53" cy="22" r="3.1" fill="#111"/customer/TJandCrew/></svg></span>';
     mapButtons.forEach(function (button) {
+      button.insertAdjacentHTML("afterbegin", car);
       button.addEventListener("click", openMaps);
     });
     sheet.querySelector(".map-backdrop").addEventListener("click", closeMaps);
