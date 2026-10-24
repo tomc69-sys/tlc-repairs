@@ -293,10 +293,47 @@
         if (lastFocus && lastFocus.focus) lastFocus.focus();
       }, window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280);
     }
-    var car = '<span class="map-road" aria-hidden="true"></span><span class="map-orbit" aria-hidden="true"><svg class="map-car" viewBox="0 0 72 32"><path fill="currentColor" d="M4 20c0-6 2-8 8-8h16l8-6h14l10 8h8c2 0 4 2 4 4v4H58a5 5 0 0 1-10 0H22a5 5 0 0 1-10 0H4z"/customer/TJandCrew/><path fill="#111" opacity=".4" d="M30 16l6-5h12l6 5z"/customer/TJandCrew/><circle cx="17" cy="22" r="3.1" fill="#111"/customer/TJandCrew/><circle cx="53" cy="22" r="3.1" fill="#111"/customer/TJandCrew/></svg></span>';
-    mapButtons.forEach(function (button) {
-      button.insertAdjacentHTML("afterbegin", car);
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var carFace = '<rect x="-16" y="-6" width="32" height="12" rx="5" fill="#ffe566" stroke="#1a1a1a" stroke-width="1.25"></rect>'
+      + '<rect x="-2" y="-11" width="14" height="8" rx="3" fill="#9ad8ff" stroke="#1a1a1a" stroke-width="1"></rect>'
+      + '<circle cx="2" cy="-8" r="1.15" fill="#1a1a1a"></circle>'
+      + '<circle cx="7" cy="-8" r="1.15" fill="#1a1a1a"></circle>'
+      + '<path d="M2 -5.4 Q4.5 -3.2 7 -5.4" fill="none" stroke="#1a1a1a" stroke-width="1.1" stroke-linecap="round"></path>'
+      + '<circle cx="-8" cy="6" r="3.2" fill="#222"></circle>'
+      + '<circle cx="9" cy="6" r="3.2" fill="#222"></circle>'
+      + '<circle cx="-8" cy="6" r="1.25" fill="#f4f4f4"></circle>'
+      + '<circle cx="9" cy="6" r="1.25" fill="#f4f4f4"></circle>'
+      + '<circle cx="14.5" cy="-1.5" r="1.6" fill="#fff4a3" stroke="#1a1a1a" stroke-width="0.6"></circle>';
+    mapButtons.forEach(function (button, index) {
+      var id = "map-road-path-" + index;
+      var motion = reduceMotion ? "" : '<animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto" calcMode="linear"><mpath href="#' + id + '"></mpath></animateMotion>';
+      button.insertAdjacentHTML("afterbegin",
+        '<span class="map-road" aria-hidden="true"></span>'
+        + '<span class="map-lane" aria-hidden="true"><svg class="map-drive" overflow="visible" aria-hidden="true">'
+        + '<path id="' + id + '" fill="none"></path>'
+        + '<g class="map-driver">' + carFace + motion + '</g>'
+        + '</svg></span>');
       button.addEventListener("click", openMaps);
+      var lane = button.querySelector(".map-lane");
+      var roadPath = button.querySelector("#" + id);
+      var driver = button.querySelector(".map-driver");
+      var svg = button.querySelector(".map-drive");
+      function layoutRoad() {
+        var w = lane.clientWidth;
+        var h = lane.clientHeight;
+        if (w < 8 || h < 8) return;
+        var radius = h / 2;
+        var d = "M " + radius + " 0 H " + (w - radius)
+          + " A " + radius + " " + radius + " 0 0 1 " + (w - radius) + " " + h
+          + " H " + radius
+          + " A " + radius + " " + radius + " 0 0 1 " + radius + " 0 Z";
+        roadPath.setAttribute("d", d);
+        svg.setAttribute("viewBox", "0 0 " + w + " " + h);
+        if (reduceMotion) driver.setAttribute("transform", "translate(" + (w / 2) + " 0)");
+      }
+      layoutRoad();
+      window.addEventListener("resize", layoutRoad);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutRoad);
     });
     sheet.querySelector(".map-backdrop").addEventListener("click", closeMaps);
     sheet.querySelector(".map-close").addEventListener("click", closeMaps);
