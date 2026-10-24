@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /work/
+Disallow: /customer/RPS/
+Disallow: /customer/TJandCrew/
 
 Sitemap: https://tlcpcrepairs.com/sitemap.xml

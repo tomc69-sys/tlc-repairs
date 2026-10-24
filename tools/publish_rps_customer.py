@@ -1,11 +1,11 @@
-"""Copy the Remote Power preview onto the TLC site at /customer/RPS/."""
+"""Copy the Remote Power preview onto the TLC site at /customer/TJandCrew/."""
 import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "work" / "remote-power"
-DEST = ROOT / "customer" / "RPS"
-PREFIX = "/customer/RPS"
+DEST = ROOT / "customer" / "TJandCrew"
+PREFIX = "/customer/TJandCrew"
 SKIP_NAMES = {"start-preview.bat", "vawt-sprite.png"}
 TEXT = {".html", ".css", ".js"}
 
@@ -15,6 +15,8 @@ def rewrite(text):
         "Local preview for",
         "Preview for",
     )
+    if "<title>Preview · " not in text:
+        text = text.replace("<title>", "<title>Preview · ", 1)
     for quote in ('"', "'"):
         needle = f"{quote}/"
         repl = f"{quote}{PREFIX}/"
