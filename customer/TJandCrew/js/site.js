@@ -251,7 +251,7 @@
     runCalc();
   }
 
-  var mapQuery = "near 4090 Eastside Highway, Stevensville, MT 59870";
+  var mapQuery = "4342 Eastside Hwy Building 438 Unit 4, Stevensville, MT 59870";
   var mapButtons = document.querySelectorAll("[data-maps]");
   if (mapButtons.length) {
     var encoded = encodeURIComponent(mapQuery);
@@ -268,8 +268,8 @@
     if (android) apps.push(["Any map app", "geo:0,0?q=" + encoded, "Opens the phone's list"]);
     sheet.innerHTML = '<button type="button" class="map-backdrop" aria-label="Close directions"></button>'
       + '<div class="map-panel" role="dialog" aria-modal="true" aria-labelledby="map-title">'
-      + '<p class="kicker">New shop</p><h2 id="map-title">Near 4090 Eastside Highway</h2>'
-      + '<p>They moved last week. This opens maps near 4090 Eastside Highway in Stevensville. The exact door is still being set. Each choice opens that app when it is on the phone.</p>'
+      + '<p class="kicker">New shop</p><h2 id="map-title">4342 Eastside Hwy</h2>'
+      + '<p>Building 438, Unit 4, Stevensville, MT 59870. They moved last week. Each choice opens that app when it is on the phone.</p>'
       + '<div class="map-choices">'
       + apps.map(function (app) {
         return '<a href="' + app[1] + '">' + app[0] + '<span>' + app[2] + '</span></a>';
