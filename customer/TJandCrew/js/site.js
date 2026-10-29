@@ -355,7 +355,25 @@
 
   var form = document.querySelector("[data-preview-form]");
   if (form) {
+    var email = form.querySelector("#email");
+    var phone = form.querySelector("#phone");
+    function clearContactNeed() {
+      if (email) email.setCustomValidity("");
+      if (phone) phone.setCustomValidity("");
+    }
+    if (email) email.addEventListener("input", clearContactNeed);
+    if (phone) phone.addEventListener("input", clearContactNeed);
     form.addEventListener("submit", function (event) {
+      var hasContact = email && phone && ((email.value || "").trim() || (phone.value || "").trim());
+      var need = hasContact ? "" : "Add an email or a phone number.";
+      if (email) email.setCustomValidity(need);
+      if (phone) phone.setCustomValidity(need);
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        form.reportValidity();
+        return;
+      }
+      clearContactNeed();
       event.preventDefault();
       var note = form.querySelector(".form-result");
       if (note) note.hidden = false;
