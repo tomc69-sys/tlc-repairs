@@ -702,6 +702,8 @@ html.motion .hero .btn { animation: rise 0.8s var(--ease) 0.4s both; }
   .preview-bar { position: static; }
 }
 
+.shop-pin { margin: 0.2rem 0 0.85rem; line-height: 1.45; }
+.shop-pin .map-word { line-height: 1.2; }
 .map-word {
   display: inline;
   margin: 0;
