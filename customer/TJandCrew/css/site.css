@@ -702,6 +702,20 @@ html.motion .hero .btn { animation: rise 0.8s var(--ease) 0.4s both; }
   .preview-bar { position: static; }
 }
 
+.map-word {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--green-deep);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  cursor: pointer;
+}
+.map-word:hover { color: var(--green); }
 .map-open {
   position: relative;
   display: inline-flex;

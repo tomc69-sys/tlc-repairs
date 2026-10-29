@@ -251,25 +251,28 @@
     runCalc();
   }
 
-  var mapQuery = "4342 Eastside Hwy Building 438 Unit 4, Stevensville, MT 59870";
+  var mapAddress = "4342 Eastside Hwy, Stevensville, MT 59870";
+  var mapPin = "46.524974,-114.066602";
+  var mapLabel = "Remote Power Systems, Building 438, Unit 4";
   var mapButtons = document.querySelectorAll("[data-maps]");
   if (mapButtons.length) {
-    var encoded = encodeURIComponent(mapQuery);
+    var encodedAddress = encodeURIComponent(mapAddress);
+    var encodedLabel = encodeURIComponent(mapLabel);
     var android = /Android/i.test(navigator.userAgent || "");
     var phone = android || /iPhone|iPad|iPod/i.test(navigator.userAgent || "") || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
     var sheet = document.createElement("div");
     sheet.className = "map-sheet";
     sheet.hidden = true;
     var apps = [
-      ["Apple Maps", "https://maps.apple.com/?daddr=" + encoded + "&dirflg=d", "iPhone and Mac"],
-      ["Google Maps", "https://www.google.com/maps/dir/?api=1&destination=" + encoded, "Android and iPhone"],
-      ["Waze", "https://waze.com/ul?q=" + encoded + "&navigate=yes", "Android and iPhone"]
+      ["Apple Maps", "https://maps.apple.com/?daddr=" + encodedAddress + "&dirflg=d", "iPhone and Mac"],
+      ["Google Maps", "https://www.google.com/maps/dir/?api=1&destination=" + encodedAddress + "&travelmode=driving", "Android and iPhone"],
+      ["Waze", "https://waze.com/ul?ll=" + mapPin + "&navigate=yes&q=" + encodedAddress, "Android and iPhone"]
     ];
-    if (android) apps.push(["Any map app", "geo:0,0?q=" + encoded, "Opens the phone's list"]);
+    if (android) apps.unshift(["Your map app", "geo:" + mapPin + "?q=" + mapPin + "(" + encodedLabel + ")", "Opens the one already on the phone"]);
     sheet.innerHTML = '<button type="button" class="map-backdrop" aria-label="Close directions"></button>'
       + '<div class="map-panel" role="dialog" aria-modal="true" aria-labelledby="map-title">'
       + '<p class="kicker">New shop</p><h2 id="map-title">4342 Eastside Hwy</h2>'
-      + '<p>Building 438, Unit 4, Stevensville, MT 59870. They moved last week. Each choice opens that app when it is on the phone.</p>'
+      + '<p>Building 438, Unit 4, Stevensville, MT 59870. Each choice opens that address in that app.</p>'
       + '<div class="map-choices">'
       + apps.map(function (app) {
         return '<a href="' + app[1] + '">' + app[0] + '<span>' + app[2] + '</span></a>';
@@ -305,6 +308,8 @@
       + '<circle cx="9" cy="6" r="1.25" fill="#f4f4f4"></circle>'
       + '<circle cx="14.5" cy="-1.5" r="1.6" fill="#fff4a3" stroke="#1a1a1a" stroke-width="0.6"></circle>';
     mapButtons.forEach(function (button, index) {
+      button.addEventListener("click", openMaps);
+      if (!button.classList.contains("map-open")) return;
       var id = "map-road-path-" + index;
       var motion = reduceMotion ? "" : '<animateMotion dur="6.5s" repeatCount="indefinite" rotate="auto" calcMode="linear"><mpath href="#' + id + '"></mpath></animateMotion>';
       button.insertAdjacentHTML("afterbegin",
@@ -313,7 +318,6 @@
         + '<path id="' + id + '" fill="none"></path>'
         + '<g class="map-driver">' + carFace + motion + '</g>'
         + '</svg></span>');
-      button.addEventListener("click", openMaps);
       var lane = button.querySelector(".map-lane");
       var roadPath = button.querySelector("#" + id);
       var driver = button.querySelector(".map-driver");
