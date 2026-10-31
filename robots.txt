@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /work/
+Disallow: /projects/files/
 Disallow: /customer/RPS/
 Disallow: /customer/TJandCrew/
 

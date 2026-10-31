@@ -19,6 +19,30 @@
     return !!(trap && String(trap.value || "").trim());
   }
 
+  var downloads = document.querySelectorAll(".dl-form");
+  var sent = "";
+  try { sent = new URLSearchParams(location.search).get("sent") || ""; } catch (err) { sent = ""; }
+  for (var i = 0; i < downloads.length; i++) {
+    (function (dl) {
+      var file = dl.getAttribute("data-file") || "";
+      var title = dl.getAttribute("data-title") || "your file";
+      var note = dl.querySelector(".form-note");
+      var reply = dl.querySelector("[name=_autoresponse]");
+      if (file && reply) {
+        dl.action = "https://formsubmit.co/" + inbox();
+        reply.value = "Your " + title + " download:\nhttps://tlcpcrepairs.com/projects/files/" + file;
+      }
+      if (note && sent && sent === title) {
+        note.hidden = false;
+        note.textContent = "Check your email for the " + title + " link.";
+      }
+      dl.addEventListener("submit", function (event) {
+        var trap = dl.querySelector(".hp input");
+        if (trap && String(trap.value || "").trim()) event.preventDefault();
+      });
+    })(downloads[i]);
+  }
+
   var mailLink = document.querySelector("[data-mail]");
   if (mailLink) {
     mailLink.addEventListener("click", function (event) {

@@ -734,6 +734,55 @@ button, input, textarea { font: inherit; }
   height: 1px;
   overflow: hidden;
 }
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.downloads {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 36rem;
+}
+.downloads li {
+  display: block;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+}
+.dl-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin-top: 0.7rem;
+}
+.dl-form input[type="email"] {
+  flex: 1 1 14rem;
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  color: var(--ink);
+}
+.dl-form .btn { margin: 0; }
+.dl-form .form-note { flex-basis: 100%; margin: 0; font-size: 0.88rem; }
+.downloads li:last-child { border-bottom: 1px solid var(--line); }
+.downloads h2 {
+  margin: 0;
+  font-family: var(--sans, Outfit, sans-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+.downloads p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.downloads p span { white-space: nowrap; }
+.downloads .btn { flex: none; min-height: 36px; padding: 0.4rem 0.85rem; }
 
 @media (max-width: 980px) {
   .site-header {
@@ -784,5 +833,6 @@ button, input, textarea { font: inherit; }
   .phone span:last-child { display: none; }
   .brand-text em { display: none; }
   .hero-actions .btn, .cta-actions .btn, .reach .btn { width: 100%; }
+  .dl-form .btn { width: 100%; }
   .trust { gap: 0.8rem 1rem; }
 }
