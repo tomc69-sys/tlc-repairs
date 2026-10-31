@@ -29,8 +29,13 @@
       var note = dl.querySelector(".form-note");
       var reply = dl.querySelector("[name=_autoresponse]");
       if (file && reply) {
+        var fileUrl = "https://tlcpcrepairs.com/projects/files/" + file.split("/").map(function (part) {
+          return encodeURIComponent(part);
+        }).join("/");
         dl.action = "https://formsubmit.co/" + inbox();
-        reply.value = "Your " + title + " download:\nhttps://tlcpcrepairs.com/projects/files/" + file;
+        reply.value = "Your " + title + " download:\n" + fileUrl;
+        var extra = dl.getAttribute("data-extra") || "";
+        if (extra) reply.value += "\n\n" + extra;
       }
       if (note && sent && sent === title) {
         note.hidden = false;
