@@ -251,12 +251,10 @@
     runCalc();
   }
 
-  var mapAddress = "4342 Eastside Hwy, Stevensville, MT 59870";
-  var mapPin = "46.524974,-114.066602";
-  var mapLabel = "Remote Power Systems, Building 438, Unit 4";
+  var mapPin = "46.52168,-114.0650";
+  var mapLabel = "Remote Power Systems Suite 4";
   var mapButtons = document.querySelectorAll("[data-maps]");
   if (mapButtons.length) {
-    var encodedAddress = encodeURIComponent(mapAddress);
     var encodedLabel = encodeURIComponent(mapLabel);
     var android = /Android/i.test(navigator.userAgent || "");
     var phone = android || /iPhone|iPad|iPod/i.test(navigator.userAgent || "") || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -264,15 +262,15 @@
     sheet.className = "map-sheet";
     sheet.hidden = true;
     var apps = [
-      ["Apple Maps", "https://maps.apple.com/?daddr=" + encodedAddress + "&dirflg=d", "iPhone and Mac"],
-      ["Google Maps", "https://www.google.com/maps/dir/?api=1&destination=" + encodedAddress + "&travelmode=driving", "Android and iPhone"],
-      ["Waze", "https://waze.com/ul?ll=" + mapPin + "&navigate=yes&q=" + encodedAddress, "Android and iPhone"]
+      ["Apple Maps", "https://maps.apple.com/?daddr=" + mapPin + "&dirflg=d", "iPhone and Mac"],
+      ["Google Maps", "https://www.google.com/maps/dir/?api=1&destination=" + mapPin + "&travelmode=driving", "Android and iPhone"],
+      ["Waze", "https://waze.com/ul?ll=" + mapPin + "&navigate=yes&q=" + encodedLabel, "Android and iPhone"]
     ];
     if (android) apps.unshift(["Your map app", "geo:" + mapPin + "?q=" + mapPin + "(" + encodedLabel + ")", "Opens the one already on the phone"]);
     sheet.innerHTML = '<button type="button" class="map-backdrop" aria-label="Close directions"></button>'
       + '<div class="map-panel" role="dialog" aria-modal="true" aria-labelledby="map-title">'
       + '<p class="kicker">New shop</p><h2 id="map-title">4342 Eastside Hwy</h2>'
-      + '<p>Building 438, Unit 4, Stevensville, MT 59870. Each choice opens that address in that app.</p>'
+      + '<p>Suite 4, Building 438, Stevensville, MT 59870. Each choice opens the exact shop pin.</p>'
       + '<div class="map-choices">'
       + apps.map(function (app) {
         return '<a href="' + app[1] + '">' + app[0] + '<span>' + app[2] + '</span></a>';
