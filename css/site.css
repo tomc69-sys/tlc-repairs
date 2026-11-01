@@ -604,6 +604,14 @@ button, input, textarea { font: inherit; }
   font-size: clamp(2.6rem, 5vw, 4.2rem);
   max-width: 16ch;
 }
+.page-hero h1.short { max-width: 14em; }
+.page-hero .hero-note {
+  margin: 0.85rem 0 0;
+  max-width: 36rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.78);
+}
 .prose {
   padding: 3.4rem 0 4rem;
 }
