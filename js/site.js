@@ -19,32 +19,50 @@
     return !!(trap && String(trap.value || "").trim());
   }
 
-  var downloads = document.querySelectorAll(".dl-form");
-  var sent = "";
-  try { sent = new URLSearchParams(location.search).get("sent") || ""; } catch (err) { sent = ""; }
+  var downloads = document.querySelectorAll(".dl-check");
   for (var i = 0; i < downloads.length; i++) {
     (function (dl) {
       var file = dl.getAttribute("data-file") || "";
-      var title = dl.getAttribute("data-title") || "your file";
       var note = dl.querySelector(".form-note");
-      var reply = dl.querySelector("[name=_autoresponse]");
-      if (file && reply) {
-        var fileUrl = "https://tlcpcrepairs.com/projects/files/" + file.split("/").map(function (part) {
-          return encodeURIComponent(part);
-        }).join("/");
-        dl.action = "https://formsubmit.co/" + inbox();
-        reply.value = "Your " + title + " download:\n" + fileUrl;
-        var extra = dl.getAttribute("data-extra") || "";
-        if (extra) reply.value += "\n\n" + extra;
-      }
-      if (note && sent && sent === title) {
-        note.hidden = false;
-        note.textContent = "Check your email for the " + title + " link.";
-      }
-      dl.addEventListener("submit", function (event) {
+      var ask = dl.querySelector(".check-q");
+      var actions = dl.querySelector(".check-actions");
+      var go = dl.querySelector(".dl-go");
+      var yes = dl.querySelector("[data-real=yes]");
+      var no = dl.querySelector("[data-real=no]");
+      function trapHere() {
         var trap = dl.querySelector(".hp input");
-        if (trap && String(trap.value || "").trim()) event.preventDefault();
-      });
+        return !!(trap && String(trap.value || "").trim());
+      }
+      function showNote(text) {
+        if (!note) return;
+        note.hidden = false;
+        note.textContent = text;
+      }
+      if (yes) {
+        yes.addEventListener("click", function () {
+          if (trapHere() || !file || !go) {
+            showNote("That didn't look like a person.");
+            return;
+          }
+          go.href = "files/" + file.split("/").map(function (part) {
+            return encodeURIComponent(part);
+          }).join("/");
+          go.setAttribute("download", file.split("/").pop());
+          go.hidden = false;
+          if (ask) ask.hidden = true;
+          if (actions) actions.hidden = true;
+          if (note) note.hidden = true;
+        });
+      }
+      if (no) {
+        no.addEventListener("click", function () {
+          if (go) {
+            go.hidden = true;
+            go.removeAttribute("href");
+          }
+          showNote("The download stays hidden.");
+        });
+      }
     })(downloads[i]);
   }
 

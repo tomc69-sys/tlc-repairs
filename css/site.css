@@ -16,6 +16,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -763,24 +764,17 @@ button, input, textarea { font: inherit; }
   padding: 0.9rem 0;
   border-top: 1px solid var(--line);
 }
-.dl-form {
+.dl-check { margin-top: 0.7rem; }
+.check-q { margin: 0 0 0.45rem; }
+.check-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  align-items: center;
-  margin-top: 0.7rem;
 }
-.dl-form input[type="email"] {
-  flex: 1 1 14rem;
-  min-width: 0;
-  border: 1px solid var(--line);
-  background: #fff;
-  border-radius: 8px;
-  padding: 0.55rem 0.7rem;
-  color: var(--ink);
-}
-.dl-form .btn { margin: 0; }
-.dl-form .form-note { flex-basis: 100%; margin: 0; font-size: 0.88rem; }
+.dl-check .btn { margin: 0; }
+.dl-check .btn-light { border-color: var(--line); }
+.dl-check .form-note { margin: 0.55rem 0 0; font-size: 0.88rem; }
+.dl-check .dl-go { margin-top: 0.15rem; }
 .downloads li:last-child { border-bottom: 1px solid var(--line); }
 .downloads h2 {
   margin: 0;
@@ -841,6 +835,6 @@ button, input, textarea { font: inherit; }
   .phone span:last-child { display: none; }
   .brand-text em { display: none; }
   .hero-actions .btn, .cta-actions .btn, .reach .btn { width: 100%; }
-  .dl-form .btn { width: 100%; }
+  .dl-check .btn { width: 100%; }
   .trust { gap: 0.8rem 1rem; }
 }
